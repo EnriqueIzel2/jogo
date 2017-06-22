@@ -40,19 +40,20 @@ instrucao2 = fonte_texto.render("Pressione 'ESC' para voltar", True, (cor_letra)
 sobre1 = fonte_sobre.render("*Desenvolvedores:", True, (cor_letra))
 sobre2 = fonte_sobre.render("Nayara Cerdeira", True, (cor_letra))
 sobre3 = fonte_sobre.render("Enrique Izel", True, (cor_letra))
-sobre9 = fonte_sobre.render("Diogo Roberto", True, (cor_letra))
-sobre10 = fonte_sobre.render("Natalia Xavier", True, (cor_letra))
-sobre11 = fonte_sobre.render("Carlos Eduardo", True, (cor_letra))
-sobre4 = fonte_sobre.render("*Orientador:", True, (cor_letra))
-sobre5 = fonte_sobre.render("Dr Jucimar Jr", True, (cor_letra))
-sobre6 = fonte_sobre.render("Músicas usadas:", True, (cor_letra))
-sobre7 = fonte_sobre.render("Rubel - Ben", True, (cor_letra))
-sobre8 = fonte_sobre.render("Universidade do Estado do Amazonas", True, (cor_letra))
+sobre4 = fonte_sobre.render("Diogo Roberto", True, (cor_letra))
+sobre5 = fonte_sobre.render("Natalia Xavier", True, (cor_letra))
+sobre6 = fonte_sobre.render("Carlos Eduardo", True, (cor_letra))
+sobre7 = fonte_sobre.render("*Orientador:", True, (cor_letra))
+sobre8 = fonte_sobre.render("Dr Jucimar Jr", True, (cor_letra))
+sobre9 = fonte_sobre.render("Músicas usadas:", True, (cor_letra))
+sobre10 = fonte_sobre.render("Rubel - Ben", True, (cor_letra))
+sobre11 = fonte_sobre.render("Universidade do Estado do Amazonas", True, (cor_letra))
+sobre12 = fonte_sobre.render("Agradecimentos especiais ao", True, (cor_letra))
+sobre13 = fonte_sobre.render("veterano Wilson que nos ajudou", True, (cor_letra))
 placar = fonte_sobre.render("Score: ", True, (cor_letra))
 
 class grafica():
     def __init__(self):
-        #print("Novos graficos")
         pass
     def fundo(self):
         janela.fill(fundo_verde)
@@ -70,45 +71,42 @@ class grafica():
     def sobre(self):
         janela.blit(sobre, (350, 50))
         janela.blit(sobre1, (20, 60))
-        janela.blit(sobre3, (50, 100))
-        janela.blit(sobre2, (50, 150))
-        janela.blit(sobre4, (20, 390))
-        janela.blit(sobre5, (50, 410))
-        janela.blit(sobre9, (50, 290))
-        janela.blit(sobre10, (50, 320))
-        janela.blit(sobre11, (50, 350))
-        janela.blit(sobre6, (500, 60))
-        janela.blit(sobre7, (500, 100))
-        janela.blit(sobre8, (190, 10))
+        janela.blit(sobre2, (50, 300))
+        janela.blit(sobre3, (50, 200))
+        janela.blit(sobre4, (50, 150))
+        janela.blit(sobre5, (50, 250))
+        janela.blit(sobre6, (50, 100))
+        janela.blit(sobre7, (20, 370))
+        janela.blit(sobre8, (50, 410))
+        janela.blit(sobre9, (500, 60))
+        janela.blit(sobre10, (500, 100))
+        janela.blit(sobre11, (190, 10))
+        janela.blit(sobre12, (450, 300))
+        janela.blit(sobre13, (450, 330))
         janela.blit(instrucao2, (10, 550))
 
     def cobra(self, orientacao, comidinha, pontuacao):
         for i in corpo:
             jiboia = pygame.draw.rect(janela, cor_cobra, (i[0]+1, i[1]+1, 18, 18))
-            print(jiboia.x, jiboia.y)
             if jiboia.y > 570:                     # baixo
                 janela.blit(game_over, (150, 100))
                 janela.blit(game_over1, (150, 250))
                 janela.blit(game_over2, (150, 300))
                 return (comidinha, pontuacao)
-                #print('bateu na borda e morreu')
             elif jiboia.x > 770.00:                  # da direita
-                print('bateu na borda e morreu')
-                janela.blit(game_over, (150,100))
-                janela.blit(game_over1, (150,250))
-                janela.blit(game_over2, (150,300))
+                janela.blit(game_over, (150, 100))
+                janela.blit(game_over1, (150, 250))
+                janela.blit(game_over2, (150, 300))
                 return (comidinha, pontuacao)
             elif jiboia.y == 1.00:                   # cima
                 janela.blit(game_over, (150, 100))
                 janela.blit(game_over1, (150, 250))
                 janela.blit(game_over2, (150, 300))
-                #print('bateu na borda e morreu')
                 return (comidinha, pontuacao)
             elif jiboia.x == 1.00:                   # esquerda
                 janela.blit(game_over, (150, 100))
                 janela.blit(game_over1, (150, 250))
                 janela.blit(game_over2, (150, 300))
-                #print('bateu na borda e morreu')
                 return (comidinha, pontuacao)
             elif corpo.count(cabeca) > 0:
                 print("morreu")
@@ -125,12 +123,12 @@ class grafica():
                 if i != comidinha:
                     del corpo[0]
                     return (comidinha, pontuacao)
-                    #break
+                    break
                 else:
                     pontuacao += 1
                     som2.play()
                     return ((random.randint(0, 39)*20, random.randint(0, 29)*20), pontuacao)
-                #break
+                break
 
     def comida(self, comidinha):
         pygame.draw.rect(janela, cor_cursor, (comidinha[0], comidinha[1], 18, 18))

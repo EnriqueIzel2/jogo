@@ -77,6 +77,7 @@ while True:
                     sys.exit()
                 if evento.key == pygame.K_m:
                     fase = 0
+
             elif fase == 2:
                 if evento.key == pygame.K_ESCAPE:
                     som.stop()
